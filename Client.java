@@ -169,36 +169,41 @@ public class Client extends Thread
 			clientbowl(0,keyRead,pwrite,receiveRead);
 		}
 	}
-  public static void main(String[] args) throws Exception
-  {
-	 Client c=new Client();
-	 int res;
-     Socket sock = new Socket("127.0.0.1",3000);
-                               // reading from keyboard (keyRead object)
-     BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
-                              // sending to server (pwrite object)
-     OutputStream ostream = sock.getOutputStream(); 
-     PrintWriter pwrite = new PrintWriter(ostream, true);
- 
-                              // receiving from server ( receiveRead  object)
-     InputStream istream = sock.getInputStream();
-     BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
-     System.out.println("Lets start the game, toss time");
-	 if(receiveRead.readLine().equals("1"))
-	 {
-		res=c.tossclost(receiveRead);
-	 }
-	 else
-	 {
-		res=c.tosscwon(keyRead,pwrite);
-	 }
-	 if(res==1)
-	 {
-		 c.blost(keyRead,pwrite,receiveRead);
-	 }
-	 else
-	 {
-		 c.bwon(keyRead,pwrite,receiveRead);
-	 }            
+    public static void main(String[] args) throws Exception
+    {
+        Client c=new Client();
+        int res;
+        string ip, name;
+        System.out.println("Enter your name:")
+        name = keyRead.readLine();
+        System.out.println(name + ", please enter the Server IP Address:")
+        ip = keyRead.readLine();
+        Socket sock = new Socket(ip,3000);
+                                // reading from keyboard (keyRead object)
+        BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
+                                // sending to server (pwrite object)
+        OutputStream ostream = sock.getOutputStream(); 
+        PrintWriter pwrite = new PrintWriter(ostream, true);
+
+                                // receiving from server ( receiveRead  object)
+        InputStream istream = sock.getInputStream();
+        BufferedReader receiveRead = new BufferedReader(new InputStreamReader(istream));
+        System.out.println("Lets start the game, toss time");
+        if(receiveRead.readLine().equals("1"))
+        {
+        res=c.tossclost(receiveRead);
+        }
+        else
+        {
+        res=c.tosscwon(keyRead,pwrite);
+        }
+        if(res==1)
+        {
+            c.blost(keyRead,pwrite,receiveRead);
+        }
+        else
+        {
+            c.bwon(keyRead,pwrite,receiveRead);
+        }            
     }                    
 }
