@@ -173,14 +173,15 @@ public class Client extends Thread
     {
         Client c=new Client();
         int res;
-        string ip, name;
-        System.out.println("Enter your name:")
+		BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
+        String ip, name;
+        System.out.println("Enter your name:");
         name = keyRead.readLine();
-        System.out.println(name + ", please enter the Server IP Address:")
+        System.out.println(name + ", please enter the Server IP Address:");
         ip = keyRead.readLine();
         Socket sock = new Socket(ip,3000);
                                 // reading from keyboard (keyRead object)
-        BufferedReader keyRead = new BufferedReader(new InputStreamReader(System.in));
+        
                                 // sending to server (pwrite object)
         OutputStream ostream = sock.getOutputStream(); 
         PrintWriter pwrite = new PrintWriter(ostream, true);
